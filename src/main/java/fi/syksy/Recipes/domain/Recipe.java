@@ -9,8 +9,11 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Recipe {
+	//unique id
 	@Id
+	//automatically generated
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	
 	private long id;
 	private String title;
