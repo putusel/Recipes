@@ -1,6 +1,7 @@
 package fi.syksy.Recipes.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import fi.syksy.Recipes.domain.Recipe;
 import fi.syksy.Recipes.domain.RecipeCategoryRepository;
 import fi.syksy.Recipes.domain.RecipeRepository;
 
+@Controller
 public class RecipeController {
 	
 	@Autowired

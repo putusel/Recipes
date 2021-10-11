@@ -1,14 +1,16 @@
 package fi.syksy.Recipes.domain;
 
-import java.awt.print.Book;
+
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface RecipeRepository extends CrudRepository<Book, Long> {
+public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
-	void save(Recipe recipe);
+	List <Recipe> findById(long id);
 	
+
 
 
 }

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Recipe {
 	//unique id
@@ -22,11 +24,11 @@ public class Recipe {
 	
 	@ManyToOne
 	@JoinColumn(name="categoryid")
+	@JsonManagedReference
 	private Category category;
 		
 	public Recipe() {
-		super();
-	
+			
 	}
 	
 	public Recipe(String title, String mainIngredient, int cookingTime) {
@@ -79,8 +81,12 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", title=" + title + ", mainIngredient=" + mainIngredient + ", cookingTime="
+		if (this.category != null)
+			return "Recipe [id=" + id + ", title=" + title + ", mainIngredient=" + mainIngredient + ", cookingTime="
 				+ cookingTime + ", category=" + this.getCategory() + "]";
+		else 
+			return "Recipe [id=" + id + ", title=" + title +", mainIngredient=" + mainIngredient + ", cookingTime="
+					+ cookingTime + "]";
 	}
 	
 
