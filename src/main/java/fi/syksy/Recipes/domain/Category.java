@@ -24,7 +24,7 @@ public class Category {
 	private List<Recipe> recipes;
 
 	public Category() {
-		super();
+		
 	}
 
 	public Category(String title) {

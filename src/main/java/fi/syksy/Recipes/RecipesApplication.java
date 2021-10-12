@@ -27,8 +27,8 @@ public class RecipesApplication {
 			crepository.save(new Category("Fish"));
 			crepository.save(new Category("Salad"));
 			
-			repository.save(new Recipe ("Pasta bolognese", "Minced beef", 30, crepository.findByName("Meat").get(0)));
-			repository.save(new Recipe ("Greek salad", "Feta cheese", 15, crepository.findByName("Salad").get(0)));
+			repository.save(new Recipe ("Pasta bolognese", "Minced beef", 30, crepository.findByTitle("Meat").get(0)));
+			repository.save(new Recipe ("Greek salad", "Feta cheese", 15, crepository.findByTitle("Salad").get(0)));
 		};
 		
 	}

@@ -13,6 +13,7 @@ import fi.syksy.Recipes.domain.Recipe;
 import fi.syksy.Recipes.domain.RecipeCategoryRepository;
 import fi.syksy.Recipes.domain.RecipeRepository;
 
+
 @Controller
 public class RecipeController {
 	
@@ -32,6 +33,12 @@ public class RecipeController {
     public String recipelist(Model model) {
 		model.addAttribute("recipes", rrepository.findAll());
         return "recipelist";
+	}
+	@RequestMapping(value = "/add")
+    public String addBook(Model model){
+    	model.addAttribute("recipe", new Recipe());
+    	model.addAttribute("categories", crepository.findAll());
+        return "addrecipe";
 	}
 	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
 	//@PreAuthorize("hasAuthority('ADMIN')")

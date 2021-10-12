@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface RecipeCategoryRepository extends CrudRepository <Category, Long>  {
-	List<Category> findByName(String name);
+	List<Category> findByTitle(String title);
 
 }
