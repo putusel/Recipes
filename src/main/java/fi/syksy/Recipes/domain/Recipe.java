@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -18,8 +20,12 @@ public class Recipe {
 	
 	
 	private long id;
+	@NotEmpty
 	private String title;
+	@NotEmpty
 	private String mainIngredient;
+	@NotEmpty
+	@Min(1)
 	private int cookingTime;
 	
 	@ManyToOne

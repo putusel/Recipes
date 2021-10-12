@@ -1,9 +1,13 @@
 package fi.syksy.Recipes.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,14 +51,22 @@ public class RecipeController {
 		rrepository.deleteById(recipeId);
 		return "redirect:../recipelist";
 	}
-	@RequestMapping(value = "/edit/{id}")
-	public String addRecipe (@PathVariable("id") Long recipeId, Model model) {
-		model.addAttribute("recipe", rrepository.findById(recipeId));
-		model.addAttribute("categories", crepository.findAll());
-		return "editbook";
-	}
+	//@RequestMapping(value = "/edit/{id}")
+	//public String addRecipe (@PathVariable("id") Long recipeId, Model model) {
+		//model.addAttribute("recipe", rrepository.findById(recipeId));
+		//model.addAttribute("categories", crepository.findAll());
+		//return "editbook";
+	//}
+	//studentlistsignup demo
 	@PostMapping("saveRecipe")
-	public String saveRecipe(Recipe recipe, Model model) {
+	public String saveRecipe(@Valid @ModelAttribute ("recipe") Recipe recipe, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			if (bindingResult.getFieldError().getField().equalsIgnoreCase("cookingTime")) {
+				bindingResult.rejectValue("cookingTime", "err.cookingTime", "Check cookingTime format");
+			} else {
+				System.out.println("Other error");
+			}
+		}
 		rrepository.save(recipe);
 		return "redirect:/recipelist";
 	}

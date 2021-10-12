@@ -18,8 +18,9 @@
 			<input type="text" id="mainIngredient" th:field="*{mainIngredient}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	<label for="cookingTime">Cooking Time</label>
+		  	<label for="cookingTime">Cooking Time in Minutes</label>
 			<input type="text" th:field="*{cookingTime}" />
+			<p th:if="${#fields.hasErrors('cookingTime')}" th:errors="*{cookingTime}">Cooking Time Error</p>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 													
