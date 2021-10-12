@@ -1,6 +1,7 @@
 package fi.syksy.Recipes.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +42,7 @@ public class RecipeController {
         return "addrecipe";
 	}
 	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteRecipe(@PathVariable("id") Long recipeId, Model model) {
 		rrepository.deleteById(recipeId);
 		return "redirect:../recipelist";
